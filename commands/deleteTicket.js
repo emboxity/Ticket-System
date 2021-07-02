@@ -11,7 +11,7 @@ module.exports = {
               if(logchannel) {
                 const NewTicketEmbed = new Discord.MessageEmbed()
                 .setTitle("Ticket Deleted")
-                .addField(`Ticket:`, `${message.member.channel}`)
+                .addField(`Ticket:`, `${message.channel.name}`)
                 .setColor("#000000")
                 .addField(`Created by:`,  `${message.author.tag}`)
                .setFooter('Trade Hangout * made by Squshu',client.user.displayAvatarURL())
@@ -26,9 +26,9 @@ module.exports = {
                     message.channel.delete();
                 }, 5000);
             }
-            call();
+           
             del();
-            
+            call();
             
 
              
