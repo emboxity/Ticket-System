@@ -10,11 +10,12 @@ module.exports = {
       db.add('times.ticket', 1); 
       const timesUsed = db.get('times.ticket');
 
-      if(message.guild.channels.cache.find(channel => channel.name === `ticket-${message.author.username}`)) {
+      if(message.guild.channels.cache.find(channel => channel.name === `ticket-${message.author.tag}`)) {
         return message.reply('you already have an existing ticket, please close your ticket first before opening a new one!');
       }
 
-      message.guild.channels.create(`ticket-${timesUsed}`, {
+      message.guild.channels.create(`ticket-${message.author.tag}`, {
+        type: 'text',
         permissionOverwrites: [
            {
                id: message.author.id,
@@ -24,14 +25,18 @@ module.exports = {
               id: message.guild.roles.everyone,
               deny: ['VIEW_CHANNEL'],
               },
+
+
+         
+
                 ],
-                type: 'text',
+                
 
               })
-              .then((channel) => {
-                const categoryId = '762077125020614666'
-                channel.setParent(categoryId)
-              })
+              // .then((channel) => {
+              //   const categoryId = '762077125020614666'
+              //   channel.setParent(categoryId)
+              // })
               .then(async channel => {
                 
                 const ticketEmbed = new Discord.MessageEmbed()
@@ -64,12 +69,6 @@ module.exports = {
           
                     case "👎":
                       async function noRedirect() {
-                        message.channel.updateOverwrite(member.user, {
-                          VIEW_CHANNEL: true,
-                          SEND_MESSAGES: true,
-                          ATTACH_FILES: true,
-                          READ_MESSAGE_HISTORY: true,
-                        })
                       
                       channel.send(`${user} Welcome!`)
                       const tEmbed = new Discord.MessageEmbed()
