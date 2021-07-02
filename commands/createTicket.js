@@ -18,7 +18,7 @@ module.exports = {
         permissionOverwrites: [
            {
                id: message.author.id,
-                allow: ['SEND_MESSAGES', 'VIEW_CHANNEL'],
+                allow: ['VIEW_CHANNEL'],
             },
              {
               id: message.guild.roles.everyone,
@@ -28,8 +28,62 @@ module.exports = {
                 type: 'text',
 
               })
+              .then((channel) => {
+                const categoryId = '762077125020614666'
+                channel.setParent(categoryId)
+              })
               .then(async channel => {
                 
+                const ticketEmbed = new Discord.MessageEmbed()
+                .setDescription("Welcome to your ticket! Is this a Trade Hangout Report or a Discord report? React with 👍 if it is a Trade Hangout Report, and 👎 if it is a Discord report.")
+                .setFooter('Trade Hangout * made by Squshu',client.user.displayAvatarURL())
+                
+                const reactionmessage =  await channel.send(ticketEmbed) 
+
+                try{
+                  await reactionmessage.react("👍")
+                  await reactionmessage.react("👎")
+                }
+                catch (err) {
+                  message.channel.send("Error sending emojis!");
+                  throw err;
+                }
+                const collector = reactionmessage.createReactionCollector(
+                  (reaction, user) => user.id === message.author.id
+                );
+                collector.on("collect", (reaction, user) => {
+                  switch (reaction.emoji.name) {
+                    case "👍":
+                      async function supportRedirect() {
+                        
+                        channel.send(`${user} Please make your report here. https://discord.gg/W5Z4wH6y9Z`)
+                    }
+                    reaction.message.delete()
+                    return supportRedirect()
+                    
+          
+                    case "👎":
+                      async function noRedirect() {
+                        message.channel.updateOverwrite(member.user, {
+                          VIEW_CHANNEL: true,
+                          SEND_MESSAGES: true,
+                          ATTACH_FILES: true,
+                          READ_MESSAGE_HISTORY: true,
+                        })
+                      
+                      channel.send(`${user} Welcome!`)
+                      const tEmbed = new Discord.MessageEmbed()
+                      .setDescription("Please describe your report immediately, as staff will be with you shortly. If you want to close the ticket, please use +delete.")
+                      channel.send(tEmbed);
+                  }
+                  reaction.message.delete()
+                  return noRedirect();
+                
+                }
+
+              })
+                
+
                 message.author.send(`you have successfully created a ticket! Please click on ${channel} to view your ticket.`);
                 
                 // bot may get a UnhandledPromiseRejectionWarning, if the user's DM's are off.
@@ -38,7 +92,7 @@ module.exports = {
                 if(logchannel) {
                   const NewTicketEmbed = new Discord.MessageEmbed()
                   .setTitle("New Ticket Created")
-                  .addField(`Ticket:`, `<#${channel.id}>, with ticket name ${message.channel.name}`)
+                  .addField(`Ticket:`, `<#${channel.id}>, with ticket name ${channel.name}`)
                   .setColor("#000000")
                   .addField(`Created by:`,  `${message.author.tag}`)
                  .setFooter('Trade Hangout * made by Squshu',client.user.displayAvatarURL())
