@@ -1,2 +1,2 @@
 # Trade-Hangout
-TH bot
+Open Source ticket tool bot for Trade Hangout
