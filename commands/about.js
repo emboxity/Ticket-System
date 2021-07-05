@@ -26,7 +26,7 @@ module.exports = {
             { name: 'Member Count', value: `${client.guilds.cache.size}`},
         )
         .addField('Github', 'https://github.com/emboxity/embox-bot')
-        .addField('Source Code', 'https://github.com/emboxity/Trade-Hangoutt', true)
+        .addField('Source Code', 'https://github.com/emboxity/Trade-Hangout', true)
         .setFooter('Trade Hangout * made by Squshu',client.user.displayAvatarURL())
 
         message.channel.send(embed)
