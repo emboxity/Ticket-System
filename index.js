@@ -27,7 +27,7 @@ for (const file of commandFiles){
 
 
 client.on('ready', () =>{
-    console.log('TH Bot is Online!')
+    console.log('Ticket System is Online!')
     function setStatus () {
 
         client.user.setPresence({
@@ -102,6 +102,7 @@ client.on('message', message => {
         command.run(message.client, message, args);
     } catch (error){
         console.error(error);
+        console.log(price)
         message.reply('There was an error trying to execute this command')
     } 
 
@@ -121,6 +122,5 @@ client.on('message', message => {
 });
 
 })
-
 
 client.login(processes.ENV.DISCORD_TOKEN)
