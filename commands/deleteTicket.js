@@ -14,7 +14,7 @@ module.exports = {
                 .addField(`Ticket:`, `${message.channel.name}`)
                 .setColor("#000000")
                 .addField(`Created by:`,  `${message.author.tag}`)
-               .setFooter('Trade Hangout * made by Squshu',client.user.displayAvatarURL())
+                .setFooter('Ticket System * made by shiba#2254',client.user.displayAvatarURL())
                 return logchannel.send(NewTicketEmbed);
               } else {
                 console.log("No logging channel");
@@ -33,5 +33,5 @@ module.exports = {
 
              
         
-        }
+        } 
     }}
