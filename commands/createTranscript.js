@@ -23,7 +23,7 @@ module.exports = {
                     title: `Chat transcript for ${channel.name}`,
                     description: ' ',
                 })
-                    .then(transcript => message.reply(`Here is the transcript. ${transcript.url}`))
+                    .then(transcript => message.reply(`here is the transcript. ${transcript.url}`))
                     .catch(console.error);
                    
 					
