@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const pfp = 'https://i.imgur.com/zEcnBhv.png';
+const pfp = 'https://i.imgur.com/0HQORDD.png';
 module.exports = {
     name: 'about',
     description: 'Gives information about the bot.',
@@ -13,12 +13,12 @@ module.exports = {
             const ErrorLOL = new Discord.MessageEmbed()
             .setDescription("\<:x_:842221675775787019> The command failed")
             .setColor("#ff6961")
-            setFooter('Trade Hangout * made by Squshu',client.user.displayAvatarURL())
+            .setFooter('Ticket System * made by shiba#2254',client.user.displayAvatarURL())
             return message.channel.send(ErrorLOL)
         }
 
         const embed = new Discord.MessageEmbed()
-        .setAuthor('Trade Hangout', pfp)
+        .setAuthor('Ticket System', pfp)
         .setDescription('The bot is coded in JavaScript.')
 
         .addFields(
@@ -26,8 +26,8 @@ module.exports = {
             { name: 'Member Count', value: `${client.guilds.cache.size}`},
         )
         .addField('Github', 'https://github.com/emboxity/embox-bot')
-        .addField('Source Code', 'https://github.com/emboxity/Trade-Hangout', true)
-        .setFooter('Trade Hangout * made by Squshu',client.user.displayAvatarURL())
+        .addField('Source Code', 'https://github.com/emboxity/Ticket-System', true)
+        .setFooter('Ticket System * made by shiba#2254',client.user.displayAvatarURL())
 
         message.channel.send(embed)
 
