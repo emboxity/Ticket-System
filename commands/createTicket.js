@@ -5,6 +5,7 @@ module.exports = {
     description: "lets you make a ticket",
     cooldown: 2,
     guildOnly: true,
+    usage: '+ticket',
     run: async (client, message, args) => {
     
 
