@@ -3,9 +3,10 @@ const sourcebin = require('sourcebin_js');
 
 module.exports = {
     name: 'transcript',
-    description: "lets you create a ticket transcript",
+    description: "Lets you create a ticket transcript",
     cooldown: 25,
     guildOnly: true,
+    usage: '+transcript',
     run: async (client, message, args) => {
         var done = false;
         const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]) || message.channel;
