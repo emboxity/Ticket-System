@@ -1,3 +1,6 @@
+// ฅ^•ﻌ•^ฅ
+// cat...
+
 const Discord = require(`discord.js`);
 const client = new Discord.Client();
 client.cooldowns = new Discord.Collection();
@@ -35,7 +38,7 @@ client.on('ready', () =>{
 
             status: "idle",
             activity: {
-                name: `${client.users.cache.size} members!`,
+                name: `tickets`,
                 type: 'WATCHING',
             }
         });
