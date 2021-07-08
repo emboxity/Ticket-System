@@ -5,6 +5,7 @@ module.exports = {
     description: 'Gives information about the bot.',
     cooldown: 1.5,
     guildOnly: true,
+    usage: '+about',
     run: async(client, message, args) =>{
 
         const target = message.mentions.members.first()
@@ -22,7 +23,7 @@ module.exports = {
         .setDescription('The bot is coded in JavaScript.')
 
         .addFields(
-            { name: 'Creator', value: 'Squshu' },
+            { name: 'Creator', value: 'shiba#2254' },
             { name: 'Member Count', value: `${client.guilds.cache.size}`},
         )
         .addField('Github', 'https://github.com/emboxity/embox-bot')
