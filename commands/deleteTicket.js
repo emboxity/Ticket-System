@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 module.exports = {
     name: 'delete',
-    description: "lets you make a ticket",
+    description: "Lets you delete a ticket",
     cooldown: 2,
     guildOnly: true,
+    usage: '+delete',
     run: async (client, message, args) => {
         if(message.channel.name.includes('ticket-')) {
             function call(){
