@@ -2,7 +2,12 @@
 // cat...
 
 const Discord = require(`discord.js`);
-const client = new Discord.Client();
+
+const { Client, Intents } = require('discord.js');
+
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+
+
 client.cooldowns = new Discord.Collection();
 
 
@@ -33,15 +38,8 @@ client.on('ready', () =>{
     console.log('Ticket System is Online!')
     function setStatus () {
 
-        client.user.setPresence({
-           
+        client.user.setPresence({ activities: [{ name: 'with your tickets'}] });
 
-            status: "idle",
-            activity: {
-                name: `tickets`,
-                type: 'WATCHING',
-            }
-        });
 
     };
 
@@ -54,7 +52,7 @@ client.on('ready', () =>{
 
 
 
-client.on('message', message => {
+client.on('messageCreate', message => {
 
     
 
@@ -74,7 +72,7 @@ client.on('message', message => {
     if (!command) return;
     const { cooldowns } = client;
     
-    if (command.guildOnly && message.channel.type === 'dm') {
+    if (command.guildOnly && message.channel.type  === 'DM') {
         return message.reply('I can\'t execute that command inside DMs!');
     }
     
@@ -125,5 +123,7 @@ client.on('message', message => {
 });
 
 })
+
+
 
 client.login(processes.ENV.DISCORD_TOKEN)
