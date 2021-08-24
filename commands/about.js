@@ -12,10 +12,10 @@ module.exports = {
 
         if(target || args[0]){
             const ErrorLOL = new Discord.MessageEmbed()
-            .setDescription("\<:x_:842221675775787019> The command failed")
+            .setDescription("The command failed")
             .setColor("#ff6961")
             .setFooter('Ticket System * made by shiba#2254',client.user.displayAvatarURL())
-            return message.channel.send(ErrorLOL)
+            return message.channel.send({ embeds: [ErrorLOL]});
         }
 
         const embed = new Discord.MessageEmbed()
@@ -30,7 +30,7 @@ module.exports = {
         .addField('Source Code', 'https://github.com/emboxity/Ticket-System', true)
         .setFooter('Ticket System * made by shiba#2254',client.user.displayAvatarURL())
 
-        message.channel.send(embed)
+        message.channel.send({ embeds: [embed]});
 
 
 
